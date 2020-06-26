@@ -1,0 +1,318 @@
+---
+title: 'Exercise 4: Assignment'
+author: "Yanik Kipfer"
+date: "18.06.2020"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    code_folding: show
+    fig_height: 6
+    highlight: tango
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+editor_options:
+  chunk_output_type: console
+---
+
+```{r knitr_init, echo=TRUE, cache=FALSE, warning=FALSE}
+library(knitr)
+
+### Global options
+options(max.print="150")
+opts_chunk$set(echo=TRUE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+rm(list = ls())
+```
+
+# Introduction
+The COVID-19 Pandemic has firmly grasped the global infosphere. Reports about the virus are mass-produced by media the world over. Newstickers are continually pushing new articles onto our mobile devices, and we are confronted with updated statistics on the newly infected population, the death toll, as well as countless articles on the economic, political and personal effects the virus is having on our lives, on a daily basis.
+
+Given the vast and diverse array of information on the virus that is provided to the public by an equally vast assortment of media sources, one has to ask if media outlets are indeed giving us an objective view of the virus and its consequences. A prominent example of how the media might be shaping the consumer’s opinions through biased reporting is Fox News’ initial downplaying of the threat of the coronavirus, at the start of the epidemic in the United States (Smith, 2020). According to a study, conducted by the Pew Research Center, on how Americans perceive the corona outbreak depending on their main news source, Fox News viewers were more likely to believe that the media exaggerated the threat of the virus (Jurkowitz & Mitchell, 2020). Thus, if people are less willing to believe that the virus poses a serious risk to themselves and society as a whole, the media’s influence could counteract the measures of health services and the government to halt and contain the spread of the virus.
+On the contrary, media could also force certain issues onto the government's agenda. By publicly criticizing the handling of the pandemic and showing the consequences of government incompetence the media, through public opinion, can force the government to take action, against the pandemic. It is, therefore, paramount to understand and monitor the influence that the media might have on their constituents and the government through their reporting.
+
+To understand how the US media has been covering the outbreak, this paper will take a closer look at how the New York Times framed the pandemic. In concrete terms, this project will study articles which reported on President Trump's handling of the COVID-19 pandemic, to determine which topics were put in the limelight of the articles.
+
+In the following sections, an overview of the pertinent literature on the agenda-setting effect of the media will be provided, to subsequently discuss the data collection and processing, as well as the results of the data anaylsis.
+
+
+# Literarture Review
+The agenda-setting effect of the media can be categorized into two levels of agenda-setting. The first level of agenda-setting can be defined as “the ability of the mass media to tell the public what to think about rather than what to think” (Weaver, 2015).
+
+According to the agenda-setting literature, the mass media’s influence on the public discussion is an unintended consequence, caused by the media’s ability only to cover a certain amount of topics at any given time (M. E. McCombs & Guo, 2014). The media is constantly faced with a variety of different topics competing for attention; however, only a limited amount of topics can be aired at any given time. Thus, the media will only choose to cover the topics it deems most interesting for the public, which in turn will lead these topics to be perceived by the public as the most important issues of the day (M. E. McCombs & Guo, 2014).
+
+The first level agenda-setting effect was first explored by McCombs & Shaw (1972) in their study on the 1968 US presidential election. The authors looked at whether issues that featured prominently in news articles were also perceived to be the most salient issues by the public. The authors found a significant correlation between prominently featured issues in the news and the public’s issue ranking, indicating that news reports indeed seemed to influence the public’s perception of the importance of issues. Following McCombs & Shaw's (1972) study, subsequent papers found further evidence of the media’s first-level agenda-setting effect (Tan & Weaver, 2009; King et al., 2017; Kowalewski & McCombs, 2019).
+
+While the first level of agenda-setting addresses the media’s influence over the salience of issues or objects in the public agenda, the second level of agenda-setting concerns itself with the media’s influence over the salience of the attributes of these objects or issues. In specific, second-level agenda-setting investigates how the media’s framing and contextualization of certain issues, leads to an agenda of attributes, which tells the public which attributes they should focus on when thinking or talking about the issue  (Wirth et al., 2010; M. E. McCombs et al., 2014; Weaver, 2015). Thus, when the media reports on the passing of a new policy or candidates in an election, it might choose to highlight certain aspects of the policy (e.g. economic consequences) or characteristics of the candidates (e.g. their appearance) more than others, which indicates to viewers that these properties are of particular importance. The literature identifies two dimensions, through which second-level agenda-setting effects are transmitted: The affective and the subjective or cognitive dimension (McCombes et al., 2000; Wirth et al., 2010). The cognitive dimension captures the description of the object or issue, while the affective dimension captures the sentiment of the description (e.g. positive, negative or neutral descriptions by articles). Thereby, media consumers are influenced by both, the descriptions of the attributes, which informs them about which attributes they should consider as important, as well as the sentiment delivered with those descriptions, which tell them how they should think about these attributes.
+
+In a study on the second-level agenda-setting effect of the media in the 1995 regional and municipal elections in Spain,  M. McCombs et al. (1997) found that voters seemed to incorporate the images of the political candidates offered by the media outlets as their own. The study looked at the media’s portrayal of substantive attributes and affective attributes of candidates (M. McCombs et al., 1997). While they found significant effects for both kinds of attributes, the strongest correspondence between the voter’s image and the media’s image of the candidates was found for the affective dimension. Therefore, voters in the study strongly mirrored the media’s affective description of a candidate, which seems to indicate that the sentiment of an article has a stronger influence on second-level agenda setting (M. McCombs et al., 1997). The stronger influence of the affective dimension was further evidenced in Coleman & Wu's (2010) study. In their study, the authors looked at whether the media’s portrayal of the candidates had an impact on the audience's emotions about a candidate. Equal to M. McCombs et al. (1997), the authors also find that the media’s agenda-setting effects have a stronger influence on the news consumers’ emotions (affective dimension) than on their cognitive assessments of a topic. Furthermore, the study finds that negative emotions have a greater impact than positive emotions (Coleman & Wu, 2010). The greater effect of negative news was also found to be present in news coverage of topics, other than candidates and elections (e.g. economic news or the perception of foreign nations) (Hester & Gibson, 2003; Wanta et al., 2004). Thus, evidence suggests that negative coverage of a topic has a greater chance of transferring the media’s attribute agendas to the audience (Bowe et al., 2013).
+
+It is, therefore, not surprising that mass-media also has a tremendous influence on the government's policy-making process. As a study by Fawzi (2018) showed, the mass media has the power to influence the political agenda, as well as the formulation, implementation and evaluation of policies. Thus, the media is able to dictate what issues the government should be concerned about and, to a certain extent, how they should be handled. 
+
+In summary, the media is not only able to tell us which topics are important (first-level agenda-setting) but is also able to tell us how to think about a given topic (second-level agenda-setting). Through second-level agenda-setting, the media is able to influence the consumers’ opinion about a topic in two ways. Firstly, by frequently reporting on certain attributes of an issue, the media can imprint onto the consumer, that these attributes of the topic are the most important (cognitive dimension). Secondly, through the tonality in its reporting (affective dimension), the media can tell the consumer how he/she should think about the issue, whereby, negative news reports are more effective at transferring the media’s attribute agenda to the consumer. Through it's influence on the public's perception of issues, it can also influence the government's the policy-cycle.
+
+This study will mostly focus on exploring first-level agenda-setting power of the New York Times, by looking at the main topics behind the New York Times' articles. The aim is to find out whether the New York Times chose to focus on specific topics when reporting about the Trump's handling of the COVID-19 pandemic.
+
+# Data Collection
+The data needed to answer the research question was collected through the New York Times' own Application-Programming-Interface [(API)](https://developer.nytimes.com/). To use the API, I first had to register for an account and create an "app", through which I could then access the API-key needed to send data requests. Once the API-key was issued, I created the query below, which allows me to search and download articles published between the *21st of January 2020* (First confirmed COVID-19 case in the US) and the *30 of May 2020*, and which contain the keywords *Trump* and *COVID-19*.
+Since the query only returns 10 results per page I had to create a for-loop, which would run through all the pages and gather all search results into a list called pages. Subsequently, I converted the list into a data frame called *corona_nyt*, which contains 1870 articles and 33 variables.
+
+```{r}
+# Load all needed packages
+packages <- c("jsonlite","dplyr","yaml","ggplot2","gridExtra","readtext","quanteda","stm","tidyverse","splitstackshape","geometry","Rtsne","rsvd")
+lapply(packages,require,character.only = TRUE)
+
+# Save api-key into variable
+NYTIMES_KEY <- yaml::yaml.load_file("/Users/ykipfer/Documents/api_keys/nyt.yml")
+
+# save search term as well as the beginning and end date for our search
+term <- "Trump AND COVID-19"
+begin_date <- "20200121"
+end_date <- "20200530"
+
+# Create baseurl which points
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",
+                  term,
+                  "&begin_date=",
+                  begin_date,
+                  "&end_date=",
+                  end_date,
+                  "&facet_filter=true&api-key=",
+                  NYTIMES_KEY,
+                  sep="")
+
+
+# Run test query to see how many search result we get per page, here it is 10 per page
+testquery <- fromJSON(baseurl)
+# create a variable which points to the max number of pages
+max_Pages <- round((testquery$response$meta$hits[1] / 10)-1)
+# create an empty vector where all search pages will be saved in
+pages <- vector("list",length=max_Pages)
+
+# run search query and save the results of each page
+for(i in 0:max_Pages){
+    nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
+    pages[[i+1]] <- nytSearch 
+    Sys.sleep(5)
+}
+
+# create dataframe with results of our search
+corona_nyt <- rbind_pages(pages)
+
+# save dataframe
+save(corona_nyt,file = "corona_nyt.Rdata")
+
+# Shows how many observations and variables there are in the dataframe
+dim(corona_nyt)
+```
+
+# Data Cleaning
+Once the Data was collected, the next step was to clean the data, in order to be able to use it in the subsequent analysis. I renamed the columns, by removing the prefix *response.docs* from the column names. Furthermore, I selected the columns of interest and filtered out articles that were not originally written by the New York Times or that constituted opinion or multimedia pieces. I chose not to include opinion pieces because I only wanted to include articles that would have been perceived by the public as "objective" reporting, to see whether these articles contain some sort of bias towards specific topics. Lastly, I converted the publication date of the articles into a year-month-day format.
+
+```{r}
+# Rename Columns for easier interpretation
+new_names <- gsub("response.docs.","",colnames(corona_nyt))
+colnames(corona_nyt) <- new_names
+
+# remove columns not needed for analysis and filter out sources that are not from the New York Times and articles that are Opinion pieces or Multimedia documents
+corona_nyt_df1 <- corona_nyt %>%
+  select(headline.main,
+         abstract,
+         lead_paragraph,
+         pub_date,
+         source,
+         document_type,
+         section_name,
+         web_url,
+         ) %>% 
+  filter(source == "The New York Times",
+         section_name != "Opinion",
+         document_type != "multimedia")
+
+# Format Publication date to Y%-M%-D%
+corona_nyt_df1$pub_date <- as.Date(corona_nyt_df1$pub_date)
+```
+
+# Data Analysis
+## Article frequencies and categories
+After cleaning the data, I commenced with the data analysis. First, I looked at article frequencies and compared those frequencies with US COVID-19 infections and deaths, to see whether the New York Times shifted it's attention and published more articles with the rising spread of the virus within the US. I counted the number of articles published per day and created a barplot. Furthermore, I downloaded historical data on the infections and deaths caused by the virus in the US, from the New York Times' [(GitHub repository)](https://github.com/nytimes/covid-19-data), which I then used to create a plot which shows the total number of cases/deaths on a given date.
+
+As can be seen, when comparing the two plots, the number of daily articles seemed to increase with the total number of new infections. The number of articles published daily reached a peak in mid-April, after which the frequency decreased slightly. Performing a correlation analysis on the number of articles published and the number of infected, as well as the number of deaths results in positive correlation coefficients, with the correlation between the number of infections and number of articles (`r cor(timeline$n,timeline$cases)`) being higher than the correlation between deaths and articles published (`r cor(timeline$n,timeline$deaths)`). Thus, it seems that with increasing infections, the New York Times chose to focus more on reporting on the president's handling of the crisis.
+
+I also looked at the top 10 news sections where the articles where published, to have an initial sense of the topics included within the articles. Equally to the article frequency, I counted the number of articles published within each section and created a barplot showing the top 10 sections with the most articles. Evidently, most articles relating to President Trump and COVID-19 can be found in the *US section*, followed by the *Business Day* and *World* section. We can, therefore, assume that a significant proportion of articles focused mostly on how the Trump and his administration are handling the spread of the virus within the US. Interestingly,however, is the fact that even though the pandemic has created serious damages to the US economy, with countless job losses, the *Bussiness* section seemed to get the same amount of attention as the *World* section. This might indicate, that the economic consequences of the virus might have been of less importance to the New York Times.
+
+```{r}
+# Count articles per day
+num_art <- corona_nyt_df1 %>% 
+  group_by(pub_date) %>% 
+  count() %>% 
+  rename(date = pub_date)
+
+# load us corona data
+corona_us <- read.csv("covid-19-data/us.csv")
+corona_us$date <- as.Date(corona_us$date)
+
+# Join_dfs
+timeline <- merge(num_art,corona_us,by="date")
+
+# Plot corona deaths and cases trend
+covid_trend <- ggplot(timeline,aes(y=deaths,x=date, color="deaths")) +
+  geom_line() +
+  geom_line(aes(y=cases, color="cases")) +
+  ylab("Number of Cases & Deaths") +
+  labs(title = "Corona cases and deaths in US by date") +
+  theme(legend.position = c(0.2, 0.6))
+
+# Plot articles trend
+articles_trend <- ggplot(timeline, aes(x=date,y=n)) +
+  geom_col() +
+  ylab("Number of articles") +
+  labs(title = "Articles per date")
+
+# count articles per day per section
+num_section <- corona_nyt_df1 %>% 
+  group_by(section_name) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  filter(n >= 17)
+
+#Plot articles per section
+sections_articles <- ggplot(num_section, aes(x=reorder(section_name,-n), y=n))+
+  geom_col() +
+  xlab("Section") +
+  ylab("Number of Articles") +
+  labs(title = "Articles per section (Top 10)")
+
+# Arrange plots in a grid to show them all in a single picture
+grid.arrange(covid_trend, articles_trend, sections_articles)
+```
+
+## Top words
+To further explore the articles' content, I looked at the most used words within the articles' headline. By looking at the most used word within the headlines, an initial overview of the main topics can be found. To analyze the word frequencies within the different headlines of the articles, I first created a corpus containing all headlines and the tokenized the corpus, to remove all the punctuation, symbols, hyphens and numbers.
+I then created a document-feature-matrix from the tokenized corpus and removed English stopwords (words which do not add much meaning to a sentence). Finally, I created a word cloud, showing the top 50 words that occurred at least 15 times within the different documents.
+Looking at our word cloud, we see that apart from the words *coronavirus* and *Trump*; we find other words such as, *health*, *w.h.o*, *tests* and *masks* which point towards medical and public health topics. Furthermore, words like *economy*, *business* and *stimulus* are evidence for the presence of economic topics. Lastly, words such as *politics*, *reopening* and *senate* point towards issues of policy. Interestingly the only other name, other than *Trump*, that appears in the word cloud is *Biden*, which of course is referring to Joseph R. Biden who will be competing against Trump in the presidential election of 2020 and has been [(criticizing the Trump administration's handling of the pandemic)](https://www.nytimes.com/2020/06/25/us/politics/biden-speech-trump-coronavirus.html).
+
+
+```{r}
+set.seed(1234)
+
+# create lead paragraphs corpus
+nyt_corpus_words <- corpus(corona_nyt_df1, text_field = "headline.main")
+
+# tokenize the text and remove puncuation, symbols etc
+nyt_toks_words <- tokens(nyt_corpus_words, remove_punct = TRUE, remove_symbols = TRUE, split_hyphens = TRUE, remove_numbers = TRUE)
+
+# create document feature matrix
+nyt_dfm_word <- dfm(nyt_toks_words) %>% 
+  dfm_remove(stopwords("en"))
+
+# plot wordcloud
+textplot_wordcloud(nyt_dfm_word,
+                   min_size = 1, #min_size and max_size control the size of the words in the wordcloud
+                   max_size = 4,
+                   min_count = 15, #Setting the min_count to 15 lets the wordcloud only display words that appeared at least 15 time within all the documents
+                   max_words = 50) # only displays to 50 words
+```
+
+## Topics
+I now turn to the topic modelling of the lead paragraphs of the articles. Lead paragraphs are used as an introduction to the article and give the reader a more detailed explanation of the topic that is about to be addressed. While the headlines gave us a granular overview of the main topics behind the articles, analysing the lead paragraph will allow a more in-depth look at the issues addressed by the articles.
+Similar to the creation of the word cloud, I first created a corpus containing all lead paragraphs, to afterwards transform it into a document-feature-matrix and remove the stopwords. However, to create more precise distinctions between the topics, I only include terms which appear at least 15 times or more, in 10 or more documents. Additionally, I removed any empty documents and, finally, converted the document-feature-matrix into a structural topic model.
+
+```{r}
+# Build corpus
+nyt_corpus <- corpus(corona_nyt_df1, text_field = "lead_paragraph")
+
+# tokenize the text and remove puncuation, symbols etc
+nyt_toks <- tokens(nyt_corpus, remove_punct = TRUE, remove_symbols = TRUE, split_hyphens = TRUE, remove_numbers = TRUE)
+
+# create document feature matrix, remove stopwords and additional words, filter out features with a term frequency below 5 and a document frequency below 2
+nyt_dfm <- dfm(nyt_toks) %>%
+  dfm_remove(stopwords("en")) %>%
+  dfm_trim(min_termfreq =15) %>%
+  dfm_trim(min_docfreq = 10)
+
+# remove empty documents
+empty <- which(rowSums(nyt_dfm) == 0)
+nyt_dfm <- nyt_dfm[-empty, ]
+
+# convert into stm
+out <- convert(nyt_dfm, "stm")
+```
+
+In order to find the optimal amount of topics, I calculate the held-out likelihood, residuals, semantic coherence and lower bound for varying numbers of *k* topics and plot the results. On the one hand, we want the held-out likelihood to be high and the residuals to be low. On the other hand, we also want a high semantic coherence, since this means that the most probable words in a given topic frequently co-occur together.
+Looking at the results shows, that around **k = 15**, the held-out likelihood, residuals and semantic coherence look the best.
+
+```{r}
+# Search for optimal number of topics
+nyt_stm_search <- searchK(out$documents, out$vocab, K = seq(5, 30, by = 1), max.em.its = 75)
+
+# plot results
+plot(nyt_stm_search)
+```
+
+After having estimated the optimal number of topics, I calculated the topic model for the lead paragraphs using 15 topics. I then plot the expected topic proportions, which show the individual share of the topics in the corpus, as well as the top 10 words associated with these topics. As can be seen, the two most common topics are *topic 8* and *topic 6*. According to the top words attributed to these topics, topic 8 seems to be mostly concerned with President Trump personally. We also see that this topic picks up on the rivalry between president Trump and Joseph Biden, as evidenced by the appearance of Biden's name.
+Topic 6 is more related to the federal government's and the Trump administration's handling of the virus. The third most common topic, *topic 12*, seems to pick up on the global spread of the pandemic. While *Topic 11* picks up on economic issues. Furthermore, we previously identified public health as a potential topic when looking at the top words used in the headlines. However, the only topic we can remotely connect to health issues when looking at our topics would be *topic 10*. The other topics have an expected proportion of below 0.05, which means that they occur in less than 5% of the documents.
+Thus, overall we can say that the main focus of the articles are on the actions of President Trump himself and, secondly, the actions of his administration, which is not overly surprising since we searched for articles containing the keywords *COVID-19* and *Trump*. Much more surprising is the fact that in addition to the actions of the government the global coverage of the virus seems to be of equal concern, when reporting on the Trump administration's overall performance, as the economic related consequences of the virus. However, the public health-related consequences seem to be of much lesser concern. This coincides with our findings of the number of articles published per news section. Therein, we found that the business section received equal amounts of attention as the world section.
+
+```{r}
+# calculate topic model with optimal number of topics
+nyt_stm_0 <- stm(out$documents, out$vocab, K = 15)
+
+
+# Plot showing most common topics
+plot.STM(nyt_stm_0, n = 10, topics =c(1:12), type = "summary")
+```
+
+# Conclusion & Shortcomings
+The main aim of this study was to find out whether the New York Times chose to focus on specific topics when reporting about the Trump administration's handling of the COVID-19 pandemic.
+In conclusion, this project has found that the New York Times released more articles reporting on the COVID-19 crisis, with rising infections. Furthermore, most articles seemed to focus on President Trump as a person and how he is handling the crisis, instead of his administration or the government in general. The global coverage and the economic consequences of the virus also enjoyed great prominence within the articles, while topics such as the consequences to public health, seemed to be much less present within the articles.
+Thus, it would seem that the New York Times reports on connections between the government's/President's actions and the global events and economic consequences of the virus more frequently than on other topics. According to the agenda-setting theory, we would assume that these topics would also be perceived as the most salient topics, by New York Times readers. These readers are, in turn, more likely to judge the administration's/President's actions by the events taking place within these two categories (economy and global events).
+The main shortcoming of the study is that it did not look at the articles as a whole. By topic modelling the full articles, we would be able to create more narrow topic definitions. Additionally, if a full picture of the US media landscape is desired, more news outlets would need to be surveyed, since this study only looked at the New York Times. Thus, the results of the study are lack representability and can not be generalised.
+
+# References
+
+The Data for this study can be found under :https://github.com/ykipfer/nyt_project.git
+
+Bowe, B. J., Fahmy, S., & Wanta, W. (2013). Missing religion: Second level agenda setting and Islam in American newspapers. International Communication Gazette, 75(7), 636–652. https://doi.org/10.1177/1748048513482544
+
+Coleman, R., & Wu, H. D. (2010). Proposing Emotion as a Dimension of Affective Agenda Setting: Separating Affect into Two Components and Comparing Their Second-Level Effects. Journalism & Mass Communication Quarterly, 87(2), 315–327. https://doi.org/10.1177/107769901008700206
+
+Fawzi, N. (2018). Beyond policy agenda-setting: political actors’ and journalists’ perceptions of news media influence across all stages of the political process. Information, Communication & Society, 21(8), 1134-1150.
+
+Hester, J. B., & Gibson, R. (2003). The Economy and Second-Level Agenda Setting: A Time-Series Analysis of Economic News and Public Opinion about the Economy. Journalism & Mass Communication Quarterly, 80(1), 73–90. https://doi.org/10.1177/107769900308000106
+
+Jurkowitz, M., & Mitchell, A. (2020, April 1). Cable TV and Coronavirus: How Americans perceive the outbreak and view media coverage differ by main news source. Pew Research Center’s Journalism Project. https://www.journalism.org/2020/04/01/cable-tv-and-covid-19-how-americans-perceive-the-outbreak-and-view-media-coverage-differ-by-main-news-source/
+
+King, G., Schneer, B., & White, A. (2017). How the news media activate public expression and influence national agendas. Science, 358(6364), 776–780. https://doi.org/10.1126/science.aao1100
+
+Kowalewski, J., & McCombs, M. (2019). Measuring public opinion formation: Assessing first- and second-level agenda setting through salience measures. The Agenda Setting Journal, 3(1), 43–62. https://doi.org/10.1075/asj.18012.kow
+
+McCombes, M., Lopez-Escobar, E., & Llamas, J. P. (2000). Setting the Agenda of Attributes in the 1996 Spanish General Election. Journal of Communication, 50(2), 77–92. https://doi.org/10.1111/j.1460-2466.2000.tb02842.x
+
+McCombs, M. E., & Guo, L. (2014). Agenda-setting influence of the media in the public sphere. The Handbook of Media and Mass Communication Theory, 251–268.
+
+McCombs, M. E., & Shaw, D. L. (1972). THE AGENDA-SETTING FUNCTION OF MASS MEDIA. Public Opinion Quarterly, 36(2), 176–187. https://doi.org/10.1086/267990
+
+McCombs, M. E., Shaw, D. L., & Weaver, D. H. (2014). New Directions in Agenda-Setting Theory and Research. Mass Communication and Society, 17(6), 781–802. https://doi.org/10.1080/15205436.2014.964871
+
+McCombs, M., Llamas, J. P., Lopez-Escobar, E., & Rey, F. (1997). Candidate Images in Spanish Elections: Second-Level Agenda-Setting Effects. Journalism & Mass Communication Quarterly, 74(4), 703–717. https://doi.org/10.1177/107769909707400404
+
+Smith, D. (2020, April 11). Trump and Fox News: The dangerous relationship shaping America’s coronavirus response. The Guardian. https://www.theguardian.com/media/2020/apr/10/fox-news-donald-trump-coronavirus
+
+Tan, Y., & Weaver, D. H. (2009). Local Media, Public Opinion, and State Legislative Policies: Agenda Setting at the State Level. The International Journal of Press/Politics, 14(4), 454–476. https://doi.org/10.1177/1940161209336225
+
+Wanta, W., Golan, G., & Lee, C. (2004). Agenda Setting and International News: Media Influence on Public Perceptions of Foreign Nations. Journalism & Mass Communication Quarterly, 81(2), 364–377. https://doi.org/10.1177/107769900408100209
+
+Weaver, D. H. (2015). Agenda-Setting Effects. In The International Encyclopedia of Communication. American Cancer Society. https://doi.org/10.1002/9781405186407.wbieca036.pub2
+
+Wirth, W., Matthes, J., Schemer, C., Wettstein, M., Friemel, T., Hänggli, R., & Siegert, G. (2010). Agenda Building and Setting in a Referendum Campaign: Investigating the Flow of Arguments among Campaigners, the Media, and the Public. Journalism & Mass Communication Quarterly, 87(2), 328–345. https://doi.org/10.1177/107769901008700207
+
